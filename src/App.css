@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.nav-item {
+  display:inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+}
+.nav-item:hover {
+  cursor: pointer;
+  color: dimgrey;
+}

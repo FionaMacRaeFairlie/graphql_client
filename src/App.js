@@ -2,19 +2,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import CreateBlog from "./createBlog";
 import Home from "./home";
+import Navbar from "./Navbar";
 
 function App() {
   return (
+    <div>
+     <Navbar /> 
     <BrowserRouter>
       <Routes>
         <Route>
           <Route index element={<Home />} />
           <Route path="create-blog" element={<CreateBlog />} />
-          {/* <Route path="contact" element={<Contact />} /> */}
-          {/* <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
+    </div>
   );
 }
 

@@ -1,11 +1,11 @@
-export const Blog = ({ content, sender, id }) => {
+export const Blog = ({ content, author, id }) => {
   return (
-    <div key={id} style={{ border: "1px solid black" }}>
-      <h3>{content}</h3>
-      <br />
-      <b>Blog Writer:</b>
-      <p>{sender}</p>
-      <br />
+    
+    <div key={id} className="card" style={{ width: "75rem" }}>
+      <div class="card-header">A post from {author}</div>
+      <div className="card-body">
+        <p class="card-text">{content}</p>
+      </div>
     </div>
   );
 };
