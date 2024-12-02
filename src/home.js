@@ -30,10 +30,9 @@ const Home = function () {
   const { loading_ws, error_ws, data_ws } = useSubscription(
     UPDATE_BLOGS_SUBSCRIPTION,
     {
-      // onSubscriptionData: (data) => {
-      onData: (data) => {
-        if (data?.subscriptionData?.data?.newBlog?.author) {
-          setBlogs([...blogs, data?.subscriptionData?.data?.newBlog]);
+      onData: (data_ws) => {   
+        if (data_ws.data.data.newBlog.author) {
+          setBlogs([...blogs,data_ws.data.data.newBlog]);
         }
       },
     }
@@ -53,7 +52,7 @@ const Home = function () {
 
   return blogs.map(({ id, content, author }) => (
     <>
-      <Blog content={content} author={author} id={id} />
+      <Blog content={content} author={author} id={id} key={id}/>
     </>
   ));
 };
