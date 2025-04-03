@@ -16,7 +16,11 @@ const CreateBlog = () => {
   const [create_blog, { data, loading, error }] = useMutation(CREATE_BLOG);
   const [content, setContent] = useState("");
   const [author, setAuthor] = useState("");
+<<<<<<< HEAD
   const [title, setTitle] = useState("");
+=======
+  // console.log({ data });
+>>>>>>> ae1bd4cdfda05e127bb4e9be77b8302e454e75c9
 
   return (
     <div className="row">
