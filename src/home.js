@@ -6,6 +6,7 @@ const GET_BLOGS = gql`
   query GetAllBlogs {
     getBlogs {
       id
+      title
       content
       author
     }
@@ -18,6 +19,7 @@ const UPDATE_BLOGS_SUBSCRIPTION = gql`
       content
       id
       author
+      title
     }
   }
 `;
@@ -30,10 +32,12 @@ const Home = function () {
   const { loading_ws, error_ws, data_ws } = useSubscription(
     UPDATE_BLOGS_SUBSCRIPTION,
     {
-      // onSubscriptionData: (data) => {
-      onData: (data) => {
-        if (data?.subscriptionData?.data?.newBlog?.author) {
-          setBlogs([...blogs, data?.subscriptionData?.data?.newBlog]);
+      onData: (data_ws) => {  
+        
+        if (data_ws?.data?.data?.newBlog?.author) {
+
+          setBlogs([...blogs,data_ws.data.data.newBlog]);
+
         }
       },
     }
@@ -41,7 +45,7 @@ const Home = function () {
 
   // setting up trigger for data change
   useEffect(() => {
-    console.log({ data });
+    console.log("in effect",{ data });
     if (data?.getBlogs?.length > 0) {
       setBlogs(data.getBlogs);
     }
@@ -51,11 +55,26 @@ const Home = function () {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  return blogs.map(({ id, content, author }) => (
+  // return blogs.map(({ id, content, author }) => (
+  //   <>
+  //     <Blog content={content} author={author} id={id} />
+  //   </>
+  // ));
+return(
+  <div className="row">
+     <div className="col-2"></div>
+  <div className="col-6">
+    <h2>Guestbook</h2>
+  { blogs.map(({ id,title, content, author }) => (
     <>
-      <Blog content={content} author={author} id={id} />
+      <Blog title={title} content={content} author={author} id={id} />
     </>
-  ));
+  ))}
+  </div>
+  <div className="col-4"></div>
+  </div>
+)
+
 };
 
 export default Home;
