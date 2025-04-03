@@ -32,18 +32,12 @@ const Home = function () {
   const { loading_ws, error_ws, data_ws } = useSubscription(
     UPDATE_BLOGS_SUBSCRIPTION,
     {
-<<<<<<< HEAD
       onData: (data_ws) => {  
         
         if (data_ws?.data?.data?.newBlog?.author) {
 
           setBlogs([...blogs,data_ws.data.data.newBlog]);
 
-=======
-      onData: (data_ws) => {   
-        if (data_ws.data.data.newBlog.author) {
-          setBlogs([...blogs,data_ws.data.data.newBlog]);
->>>>>>> ae1bd4cdfda05e127bb4e9be77b8302e454e75c9
         }
       },
     }
