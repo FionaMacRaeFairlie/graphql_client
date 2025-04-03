@@ -61,11 +61,6 @@ const Home = function () {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
 
-  // return blogs.map(({ id, content, author }) => (
-  //   <>
-  //     <Blog content={content} author={author} id={id} />
-  //   </>
-  // ));
 return(
   <div className="row">
      <div className="col-2"></div>
@@ -73,11 +68,7 @@ return(
     <h2>Guestbook</h2>
   { blogs.map(({ id,title, content, author }) => (
     <>
-<<<<<<< HEAD
       <Blog title={title} content={content} author={author} id={id} />
-=======
-      <Blog content={content} author={author} id={id} key={id}/>
->>>>>>> ae1bd4cdfda05e127bb4e9be77b8302e454e75c9
     </>
   ))}
   </div>
